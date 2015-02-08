@@ -4,7 +4,7 @@ Implements C# and C++ wrapper library over SuiteSparse sparse matrix solvers.
 Cmake building script works on Linux and Windows systems.
 
 For Linux installation SuiteSparse development package should already be installed through package manager.
-Windows builder already includes precompiled SuiteSparse 4.4.3 (no metis support), blas and lapack libraries (32/64 bit). So only Visual Studio C++/C# compiller is required.
+Windows builder already includes precompiled SuiteSparse 4.4.3 (no metis support), blas and lapack libraries (32/64 bit). So only Visual Studio C++/C# compiler is required.
 Visual Studio uses only release builds.
 
 Included SuiteSparse methods:
@@ -23,8 +23,8 @@ Installation: tested on OpenSuse 13.2 (gcc-4.8.3), Windows7(x64) (Visual Studio 
 start terminal from current directory
 mkdir build && cd build
 cmake .. 
-make edit_cache, set CMAKE_BUILD_TYPE, CMAKE_INSTALL_PREFIX etc.
-make install
+make edit_cache //set CMAKE_BUILD_TYPE, CMAKE_INSTALL_PREFIX etc.
+make install    //with sudo if required
 //testing installation
 cd bin && ./cpptest
 
@@ -33,10 +33,10 @@ cd bin && ./cpptest
 1) install and run cmake
 2) in cmake gui set cholmod_wrapper as a source directory and cholmod_wrapper/build as a binaries directory
 3) configure, choose a compiler (VS 32/64 bit)
-4) set CMAKE_INSTALL_PREFIX to a directory in which you wish to insatall library.  If it's left with its default value (Program Files) then administrator rights are required for final installation. 
+4) set CMAKE_INSTALL_PREFIX to a directory in which you wish to insatall library.  If it's left with its default value (Program Files) then administrator access is required for final installation. 
 5) open created build/cholmod_wrapper.sln solution file with VS and build it
-6) build INSTALL project in VS. If no error occured then CMAKE_INSTALL_PREFIX directory should contain blas/lapack dll files, cholmod_wrapper.dll/lib and include/cholmod_wrapper.h
-7) add $CMAKE_INSTALL_PREFIX to your system Path.
+6) build INSTALL project in VS. If no error occured then $(CMAKE_INSTALL_PREFIX) directory should contain blas/lapack dll files, cholmod_wrapper.dll/lib and include/cholmod_wrapper.h
+7) add $(CMAKE_INSTALL_PREFIX) directory to your system Path.
 8) to test installation run build/bin/Release/cpptest.exe.
 --- C# wrapper
 9) goto SuiteSparseCSWrap directory and build the VisualStudio solution wich contains C# wrapper library and testing console application.
