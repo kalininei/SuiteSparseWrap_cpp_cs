@@ -1,0 +1,10 @@
+LIBRARY cholmod_wrapper
+EXPORTS
+	cholmodw_init
+	cholmodw_free
+	cholmodw_setmat_triplets
+	cholmodw_setmat_rowmaj
+	cholmodw_setmat_csr
+	cholmodw_print_info
+	cholmodw_solve
+	cholmodw_print_info
