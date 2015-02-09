@@ -26,7 +26,7 @@ extern "C"{
 //    tp = CHOLMODSOLVER: cholmod sparse Cholezky factorization (A*A' algorithm is used for non-trianlge A)
 //    tp = UMFPACKSOLVER: umfpack multifrontal factorization
 //    tp = SPQRSOLVER:    QR factorization
-void* STDCALL cholmodw_init(int tp = UMFPACKSOLVER);
+void* STDCALL cholmodw_init(int tp);
 
 // ============ procedure to set matrix for the solver
 //
@@ -48,7 +48,7 @@ void* STDCALL cholmodw_init(int tp = UMFPACKSOLVER);
 // int cols[] = {1, 3, 1, 2, 3, 0, 3};
 // double vals[] = {-1, 1, 4, 2, 2, 2, 1}; 
 // cholmodw_setmat_triplets(sol, 7, 4, 4, rows, cols, vals, 0);
-void STDCALL cholmodw_setmat_triplets(void* obj, int Nnz, int Nrow, int Ncol, int* rows, int* cols, double* vals, int sym=0);
+void STDCALL cholmodw_setmat_triplets(void* obj, int Nnz, int Nrow, int Ncol, int* rows, int* cols, double* vals, int sym);
 
 // matrix in dense rowmajor format. All zero entries will be eliminated within the procedure
 // Example
@@ -61,7 +61,7 @@ void STDCALL cholmodw_setmat_triplets(void* obj, int Nnz, int Nrow, int Ncol, in
 // void* sol = cholmodw_init();
 // double vals[] = {0, -1, 0, 1, 0, 4, 2, 2, 2, 0, 0, 0, 0, 0, 0, 1}; 
 // cholmodw_setmat_rowmaj(sol, 4, 4, vals, 0);
-void STDCALL cholmodw_setmat_rowmaj(void* obj, int Nrow, int Ncol, double* vals, int sym=0);
+void STDCALL cholmodw_setmat_rowmaj(void* obj, int Nrow, int Ncol, double* vals, int sym);
 
 //matrix in csr format
 // Example
@@ -76,7 +76,7 @@ void STDCALL cholmodw_setmat_rowmaj(void* obj, int Nrow, int Ncol, double* vals,
 // int col_ind[] = {1, 3, 1, 2, 3, 0, 3};
 // double vals[] = {-1, 1, 4, 2, 2, 2, 1}; 
 // cholmodw_setmat_csr(sol, 4, row_ptr, col_ind, vals, 0);
-void STDCALL cholmodw_setmat_csr(void* obj, int Nrows, int* row_ptr, int* col_ind, double* vals, int sym=0);
+void STDCALL cholmodw_setmat_csr(void* obj, int Nrows, int* row_ptr, int* col_ind, double* vals, int sym);
 
 // ==================== Solution
 
@@ -106,7 +106,7 @@ void STDCALL cholmodw_free(void* obj);
 namespace SuiteSparseWrap{
 
 //class wrapper for procedures above
-template<int tp = UMFPACKSOLVER>
+template<int tp = SPQRSOLVER>
 class Solver{
 	void* slv;
 public:
