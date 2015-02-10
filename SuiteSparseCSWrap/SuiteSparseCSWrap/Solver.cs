@@ -8,16 +8,16 @@ namespace SuiteSparseCSWrap
 {
 	internal static class NativeMethods
 	{
-		[DllImport("cholmod_wrapper.dll")]
+		[DllImport("suitesparse_wrap.dll")]
 		internal static extern IntPtr cholmodw_init(int tp);
-		[DllImport("cholmod_wrapper.dll")]
+		[DllImport("suitesparse_wrap.dll")]
 		internal static extern void cholmodw_free(IntPtr obj);
-		[DllImport("cholmod_wrapper.dll")]
+		[DllImport("suitesparse_wrap.dll")]
 		internal static extern void cholmodw_setmat_triplets(
 				IntPtr obj, int Nnz, int Nrow, int Ncol, int[] rows, int[] cols, double[] vals, int sym);
-		[DllImport("cholmod_wrapper.dll")]
+		[DllImport("suitesparse_wrap.dll")]
 		internal static extern int cholmodw_solve(IntPtr obj, double[] rhs, double[] x);
-		[DllImport("cholmod_wrapper.dll")]
+		[DllImport("suitesparse_wrap.dll")]
 		internal static extern void cholmodw_print_info(IntPtr obj);
 	}
 

@@ -1,4 +1,4 @@
-LIBRARY cholmod_wrapper
+LIBRARY suitesparse_wrap
 EXPORTS
 	cholmodw_init
 	cholmodw_free

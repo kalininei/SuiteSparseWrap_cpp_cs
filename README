@@ -16,32 +16,33 @@ See http://faculty.cse.tamu.edu/davis/suitesparse.html for details.
 Only basic SuiteSparse library capabilities with default parameters are supported.
 
 
-Installation: tested on OpenSuse 13.2 (gcc-4.8.3), Windows7(x64) (Visual Studio 2010)
+Installation: tested on OpenSuse 13.2 (gcc-4.8.3), Windows7(x64) (Visual Studio 2010 Express)
 
 ----- LINUX: cmake, blas, lapack and SuiteSparse packages should already be installed in your system 
 
 start terminal from current directory
 mkdir build && cd build
 cmake .. 
-make edit_cache //set CMAKE_BUILD_TYPE, CMAKE_INSTALL_PREFIX etc.
+make edit_cache //set CMAKE_BUILD_TYPE, CMAKE_INSTALL_PREFIX
+make
 make install    //with sudo if required
-//testing installation
-cd bin && ./cpptest
+//test installation
+bin/cpptest
 
 ----- Window (Visual Visual studio): no additianal libraries are required
 
 1) install and run cmake
-2) in cmake gui set cholmod_wrapper as a source directory and cholmod_wrapper/build as a binaries directory
+2) in cmake gui set SuiteSparseWrap_cpp_cs as a source directory and SuiteSparseWrap_cpp_cs/build as a binaries directory
 3) configure, choose a compiler (VS 32/64 bit)
-4) set CMAKE_INSTALL_PREFIX to a directory in which you wish to insatall library.  If it's left with its default value (Program Files) then administrator access is required for final installation. 
-5) open created build/cholmod_wrapper.sln solution file with VS and build it
-6) build INSTALL project in VS. If no error occured then $(CMAKE_INSTALL_PREFIX) directory should contain blas/lapack dll files, cholmod_wrapper.dll/lib and include/cholmod_wrapper.h
-7) add $(CMAKE_INSTALL_PREFIX) directory to your system Path.
+4) set CMAKE_INSTALL_PREFIX to a directory in which you wish to install library.  If it's left with its default value (Program Files) then administrator access is required for final installation. 
+5) generate, open created build/suitesparse_wrap.sln solution file with VS
+6) build INSTALL project in VS. If no error occured then $(CMAKE_INSTALL_PREFIX) directory should contain blas/lapack dll files, suitesparse_wrap.dll/lib and include/suitesparse_wrap.h
+7) add $(CMAKE_INSTALL_PREFIX) directory to your system Path for external binaries linkage (including C# *.exe files)
 8) to test installation run build/bin/Release/cpptest.exe.
 --- C# wrapper
 9) goto SuiteSparseCSWrap directory and build the VisualStudio solution wich contains C# wrapper library and testing console application.
 
 
 ----- Examples
-See examples in cpptest/cpptest.cpp, SuiteSparseCSWrap/SolverTest/Program.cs
+See examples in cpptest/cpptest.cpp and SuiteSparseCSWrap/SolverTest/Program.cs
 

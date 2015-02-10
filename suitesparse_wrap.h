@@ -1,5 +1,5 @@
-#ifndef CHOLMOD_WRAPPER_H
-#define CHOLMOD_WRAPPER_H
+#ifndef SUITESPARSE_WRAPPER_H
+#define SUITESPARSE_WRAPPER_H
 
 #ifdef WIN32 
 	#include <stdlib.h>
@@ -81,7 +81,7 @@ void STDCALL cholmodw_setmat_csr(void* obj, int Nrows, int* row_ptr, int* col_in
 // ==================== Solution
 
 //solve a system Ax = rhs
-//These procedure can be called multiple times with various rhs.
+//This procedure can be called multiple times with various rhs.
 //Second and all further calls will be much faster, because factorization procedures will be omitted.
 //Returns non zero integer if solution was obtained and 0 otherwise.
 int STDCALL cholmodw_solve(void* obj, double* rhs, double* x);

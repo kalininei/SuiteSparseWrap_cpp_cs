@@ -6,7 +6,7 @@ IF(WIN32)
 	SET(CMAKE_CONFIGURATION_TYPES "Release" CACHE STRING "" FORCE)
 ENDIF(WIN32)
 
-PROJECT(CHOLMOD_WRAPPER)
+PROJECT(SUITESPARSE_WRAP)
 
 # ------------- Detect SuiteSparse libraries:
 LIST(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/")
@@ -41,20 +41,20 @@ SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 SET(ARCHIVE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
-# ------------- cholmod_wrapper
-set(SOURCES cholmod_wrapper.cpp)
+# ------------- suitesparse_wrap
+set(SOURCES suitesparse_wrap.cpp)
 if (WIN32)
 	set(SOURCES ${SOURCES} dll.def)
 endif()
-set (HEADERS cholmod_wrapper.h)
+set (HEADERS suitesparse_wrap.h)
 
-ADD_LIBRARY(cholmod_wrapper SHARED ${SOURCES} ${HEADERS})
-INCLUDE_DIRECTORIES(cholmod_wrapper ${SUITESPARSE_INCLUDE_DIRS})
-TARGET_LINK_LIBRARIES(cholmod_wrapper ${SUITESPARSE_LIBRARIES})
+ADD_LIBRARY(suitesparse_wrap SHARED ${SOURCES} ${HEADERS})
+INCLUDE_DIRECTORIES(suitesparse_wrap ${SUITESPARSE_INCLUDE_DIRS})
+TARGET_LINK_LIBRARIES(suitesparse_wrap ${SUITESPARSE_LIBRARIES})
 
-# -------------- cholmod installation
-SET_TARGET_PROPERTIES(cholmod_wrapper PROPERTIES PUBLIC_HEADER "${HEADERS}")
-INSTALL(TARGETS cholmod_wrapper
+# -------------- suitesparse installation
+SET_TARGET_PROPERTIES(suitesparse_wrap PROPERTIES PUBLIC_HEADER "${HEADERS}")
+INSTALL(TARGETS suitesparse_wrap
 		RUNTIME DESTINATION .
 		LIBRARY DESTINATION .
 		ARCHIVE DESTINATION .

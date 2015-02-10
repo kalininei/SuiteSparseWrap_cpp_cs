@@ -3,7 +3,7 @@
 #include "cholmod.h"
 #include "umfpack.h"
 #include "SuiteSparseQR_C.h"
-#include "cholmod_wrapper.h"
+#include "suitesparse_wrap.h"
 
 //lapack procedures: lu factorization and solution
 extern "C" void dgetrf_(void*, void*, void*, void*, void*, void*);
