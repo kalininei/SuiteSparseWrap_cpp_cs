@@ -29,20 +29,24 @@ make install    //with sudo if required
 //test installation
 bin/cpptest
 
------ Window (Visual Visual studio): no additianal libraries are required
+----- Windows (Visual studio): no additianal libraries are required
+1) Since all libraries were built using VS 2010 you need to install VS2010 redistributables
+   which could be downloaded from
+   32bit: https://www.microsoft.com/en-us/download/details.aspx?id=5555   
+   64bit: https://www.microsoft.com/en-us/download/details.aspx?id=14632
 
-1) install and run cmake
-2) in cmake gui set SuiteSparseWrap_cpp_cs as a source directory and SuiteSparseWrap_cpp_cs/build as a binaries directory
-3) configure, choose a compiler (VS 32/64 bit)
-4) set CMAKE_INSTALL_PREFIX to a directory in which you wish to install library.  If it's left with its default value (Program Files) then administrator access is required for final installation. 
-5) generate, open created build/suitesparse_wrap.sln solution file with VS
-6) build INSTALL project in VS. If no error occured then $(CMAKE_INSTALL_PREFIX) directory should contain blas/lapack dll files, suitesparse_wrap.dll/lib and include/suitesparse_wrap.h
-7) add $(CMAKE_INSTALL_PREFIX) directory to your system Path for external binaries linkage (including C# *.exe files)
-8) to test installation run build/bin/Release/cpptest.exe.
+2) All precompiled libraries are stored in winlib/lib or winlib/lib64 for 32 and 64bit builds respectively.
+   Copy them to a directory from your system PATH or to a directory with your executable.
+
 --- C# wrapper
-9) goto SuiteSparseCSWrap directory and build the VisualStudio solution wich contains C# wrapper library and testing console application.
+3) goto SuiteSparseCSWrap directory and build the VisualStudio solution wich contains C# wrapper library and testing console application.
+4) use SuiteSparseCSWrap.dll in your application
 
+--- Cpp wrapper
+3) to test the library goto SuiteSparseCppVSWrap directory and build the VisualStudio (2017) solution (disable precompiled headers if needed).
+4) copy suitesparse_vswrap.cpp and suitesparse_vswrap.h to your project and use them.
 
 ----- Examples
-See examples in cpptest/cpptest.cpp and SuiteSparseCSWrap/SolverTest/Program.cs
-
+See examples in cpptest/cpptest.cpp (Linux)
+	SuiteSparseCSWrap/SolverTest/Program.cs (Windows, C#)
+	SuiteSparseCppVSWrap/SuiteSparseCppVSWrap/program.cpp (Windows, C++)
