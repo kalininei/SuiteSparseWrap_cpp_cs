@@ -1,7 +1,8 @@
 SuiteSparse C++, C# simple wrapper library for sparse matrix solution.
 
 Implements C# and C++ wrapper library over SuiteSparse sparse matrix solvers.
-Cmake building script works on Linux and Windows systems.
+Cmake building script works on Linux system.
+Windows version contains set of prebuild libraries.
 
 For Linux installation SuiteSparse development package should already be installed through package manager.
 Windows builder already includes precompiled SuiteSparse 4.4.3 (no metis support), blas and lapack libraries (32/64 bit). So only Visual Studio C++/C# compiler is required.
@@ -16,7 +17,7 @@ See http://faculty.cse.tamu.edu/davis/suitesparse.html for details.
 Only basic SuiteSparse library capabilities with default parameters are supported.
 
 
-Installation: tested on OpenSuse 13.2 (gcc-4.8.3), Windows7(x64) (Visual Studio 2010 Express)
+Installation: tested on OpenSuse 13.2 (gcc-4.8.3), Windows7(x64) (Visual Studio 2010 Express, Visual Studio 2017 Comunity)
 
 ----- LINUX: cmake, blas, lapack and SuiteSparse packages should already be installed in your system 
 
@@ -30,7 +31,7 @@ make install    //with sudo if required
 bin/cpptest
 
 ----- Windows (Visual studio): no additianal libraries are required
-1) Since all libraries were built using VS 2010 you need to install VS2010 redistributables
+1) Since all libraries were built using VS 2010 you need to install VS C++ 2010 redistributables
    which could be downloaded from
    32bit: https://www.microsoft.com/en-us/download/details.aspx?id=5555   
    64bit: https://www.microsoft.com/en-us/download/details.aspx?id=14632
@@ -44,7 +45,7 @@ bin/cpptest
 
 --- Cpp wrapper
 3) to test the library goto SuiteSparseCppVSWrap directory and build the VisualStudio (2017) solution (disable precompiled headers if needed).
-4) copy suitesparse_vswrap.cpp and suitesparse_vswrap.h to your project and use them.
+4) copy suitesparse_vswrap.cpp and suitesparse_vswrap.h from SuiteSparseCppVSWrap to your project and use them.
 
 ----- Examples
 See examples in cpptest/cpptest.cpp (Linux)
